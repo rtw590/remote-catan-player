@@ -29,6 +29,10 @@ body {
     color: white !important;
 }
 
-/* .theme--light .btn {
+h2 {
     color: white;
-} */
+}
+
+h4 {
+    color: white;
+}

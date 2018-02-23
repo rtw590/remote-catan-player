@@ -18,7 +18,13 @@ new Vue ({
         victoryPoints: 2,
         longestRoad: false,
         largestArmy: false,
-        longestRoadColor: "error"
+        longestRoadColor: "error",
+        knights: 0,
+        victoryPointCards: 0,
+        monopoly: 0,
+        roadBuildingCard: 0,
+        yearOfPlenty: 0,
+        knightsPlayed: 0
     },
     //  Vue Methods: Can hold functions
     methods: {
@@ -53,20 +59,41 @@ new Vue ({
             this.ore -= dec;
         },
         buildRoad: function(inc) {
-            this.roads += inc;
-            this.roadsRemaining -= inc;
+            if (this.wood >= 1 && this.brick >= 1) {
+                this.wood -= 1;
+                this.brick -= 1;
+                this.roads += inc;
+                this.roadsRemaining -= inc;
+            }
         },
         buildSettlement: function(inc) {
-            this.settlements += inc;
-            this.settlementsRemaining -= inc;
-            this.victoryPoints += inc;
+            if (this.wood >= 1 && this.brick >= 1 && this.sheep >= 1 && this.wheat >= 1 && this.settlementsRemaining >= 1) {
+                this.wood -= 1;
+                this.brick -= 1;
+                this.sheep -= 1;
+                this.wheat -= 1;
+                this.settlements += inc;
+                this.settlementsRemaining -= inc;
+                this.victoryPoints += inc;
+            }
         },
         buildCity: function(inc) {
-            this.cities += inc;
-            this.citiesRemaining -= inc;
-            this.settlementsRemaining += inc;
-            this.settlements -= inc;
-            this.victoryPoints += inc;
+            if (this.wheat >= 2 && this.ore >= 3 && this.citiesRemaining >= 1 && this.settlements >= 1) {
+                this.wheat -= 2;
+                this.ore -= 3;
+                this.cities += inc;
+                this.citiesRemaining -= inc;
+                this.settlementsRemaining += inc;
+                this.settlements -= inc;
+                this.victoryPoints += inc;
+            }
+        },
+        buyDevelopmentCard: function() {
+            if (this.wheat >= 1 && this.ore >= 1 && this.sheep >= 1) {
+                this.wheat -= 1;
+                this.ore -= 1;
+                this.sheep -= 1;
+            }
         },
         longestRoadVP: function() {
             if (this.longestRoad) {
@@ -80,6 +107,49 @@ new Vue ({
                 this.victoryPoints += 2
             } else {
                 this.victoryPoints -= 2
+            }
+        },
+        addRoadBuildingCard: function(inc) {
+            this.roadBuildingCard += inc;
+        },
+        subtractRoadBuildingCard: function(dec) {
+            if (this.roadBuildingCard > 0) {
+                this.roadBuildingCard -= dec;
+            }
+        },
+        addVictoryPointCards: function(inc) {
+            this.victoryPointCards += inc;
+            this.victoryPoints += inc;
+        },
+        subtractVictoryPointCards: function(dec) {
+            if (this.victoryPointCards > 0) {
+                this.victoryPointCards -= dec;
+                this.victoryPoints -= dec;
+            }
+        },
+        addKnights: function(inc) {
+            this.knights += inc;
+        },
+        subtractKnights: function(dec) {
+            if (this.knights > 0) {
+                this.knights -= dec;
+                this.knightsPlayed += dec;
+            }
+        },
+        addMonopoly: function(inc) {
+            this.monopoly += inc;
+        },
+        subtractMonopoly: function(dec) {
+            if (this.monopoly > 0) {
+                this.monopoly -= dec;
+            }
+        },
+        addYearOfPlenty: function(inc) {
+            this.yearOfPlenty += inc;
+        },
+        subtractYearOfPlenty: function(dec) {
+            if (this.yearOfPlenty > 0) {
+                this.yearOfPlenty -= dec;
             }
         }
     },
