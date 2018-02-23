@@ -24,7 +24,10 @@ new Vue ({
         monopoly: 0,
         roadBuildingCard: 0,
         yearOfPlenty: 0,
-        knightsPlayed: 0
+        knightsPlayed: 0,
+        diceResult: 0,
+        die1: 0,
+        die2: 0
     },
     //  Vue Methods: Can hold functions
     methods: {
@@ -151,6 +154,11 @@ new Vue ({
             if (this.yearOfPlenty > 0) {
                 this.yearOfPlenty -= dec;
             }
+        },
+        diceRoll: function() {
+            this.die1 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+            this.die2 = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+            this.diceResult = this.die1 + this.die2
         }
     },
     // Different than methods. Lookup documentation to understand better

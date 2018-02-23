@@ -73,6 +73,12 @@
                       Cities: 2 Wheat + 3 Ore || Development Cards: 1 Sheep + 1 Wheat + 1 Ore
                   </h4>
               </v-flex>
+              <v-flex>
+                  <v-btn block color="purple" v-on:click="diceRoll()">
+                      Roll Dice
+                  </v-btn>
+                  <h4>{{ diceResult }}</h4>
+              </v-flex>
             </v-layout>
 
         <v-layout row wrap>
@@ -250,18 +256,6 @@
                     </v-flex>
                   </v-layout>
 
-
-                  <v-layout row wrap>
-                    <v-flex>
-                      <v-text-field
-                        dark
-                        name="input-1"
-                        label="Other Development Cards/Notes"
-                        id="testing"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-
                   <v-layout row wrap>
                     <v-flex>
                         <v-btn block color="purple" style="cursor: default">
@@ -332,7 +326,7 @@
                             </v-card-media> -->
                             <v-card-title primary-title>
                               <div>
-                                <h3 class="headline mb-0">Road Building: {{ roadBuildingCard }}</h3>
+                                <h3 class="headline mb-0">Road Card: {{ roadBuildingCard }}</h3>
                               </div>
                             </v-card-title>
                             <v-card-actions>
@@ -405,6 +399,17 @@
                             </v-flex>
           
                           </v-layout>
+
+                          <v-layout row wrap>
+                              <v-flex>
+                                <v-text-field
+                                  dark
+                                  name="input-1"
+                                  label="Notes"
+                                  id="testing"
+                                ></v-text-field>
+                              </v-flex>
+                            </v-layout>
 
 
                   
